@@ -60,3 +60,5 @@ Committing changes to existing files
 $ git commit -am "Made changes to files"
 $ git push
 ```
+## Raspberry Pi
+![GPIO Pins](https://www.raspberrypi.org/documentation/usage/gpio/images/gpio-pins-pi2.jpg "GPIO Pins")
