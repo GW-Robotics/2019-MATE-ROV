@@ -2,7 +2,7 @@
 ### Required software
 * [VSCode](https://code.visualstudio.com/)
 * [Python 3](https://www.python.org/downloads/)
-* [Git](https://git-scm.com/)
+* [Git](https://git-scm.com/downloads)
 ### Useful software
 * [Fritzing](http://fritzing.org/home/)
 ## Navigating with the command line
