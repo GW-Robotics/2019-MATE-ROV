@@ -61,4 +61,5 @@ $ git commit -am "Made changes to files"
 $ git push
 ```
 ## Raspberry Pi
-![GPIO Pins](https://www.raspberrypi.org/documentation/usage/gpio/images/gpio-pins-pi2.jpg "GPIO Pins")
+![GPIO Pins](images/gpio-pins-pi2.jpg "GPIO Pins")
+![GPIO Pin Diagram](images/gpio-numbers-pi2.png "GPIO Pin Diagram")
