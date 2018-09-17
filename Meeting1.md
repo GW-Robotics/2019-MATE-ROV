@@ -1,6 +1,7 @@
 # Meeting 1 - 9/17/18
 ### Required software
 * [VSCode](https://code.visualstudio.com/)
+* [Python 3](https://www.python.org/downloads/)
 * [Git](https://git-scm.com/)
 ### Useful software
 * [Fritzing](http://fritzing.org/home/)
