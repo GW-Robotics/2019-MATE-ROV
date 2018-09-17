@@ -40,3 +40,22 @@ Test that git is installed
 $ git --version
 git version 2.14.1
 ```
+Clone this repository
+```shell
+$ git clone https://github.com/GW-Robotics/2019-MATE-ROV/
+```
+Navigate into the repository
+```shell
+$ cd 2019-MATE-ROV
+```
+Committing a new file
+```shell
+$ git add file.txt
+$ git commit -m "I added a file!"
+$ git push
+```
+Committing changes to existing files
+```shell
+$ git commit -am "Made changes to files"
+$ git push
+```
