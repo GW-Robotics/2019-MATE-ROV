@@ -62,3 +62,4 @@ $ git push
 ```
 ## Raspberry Pi
 ![GPIO Pins](images/gpio-pins-pi2.jpg "GPIO Pins")
+![GPIO Pin Diagram](images/gpio-numbers-pi2.png "GPIO Pin Diagram")
