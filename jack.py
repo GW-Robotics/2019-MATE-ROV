@@ -1,1 +1,1 @@
-print (whaddup brah)
+print "whaddup brah"
