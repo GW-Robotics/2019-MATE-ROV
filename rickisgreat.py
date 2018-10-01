@@ -1,1 +1,0 @@
-print("i dont understand computers")
