@@ -5,3 +5,6 @@ print(my_arr)
 
 bigger_arr = 4*my_arr
 print(bigger_arr)
+
+imaginary_number = 4j
+print(imaginary_number)
