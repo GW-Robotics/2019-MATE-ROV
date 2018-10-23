@@ -6,6 +6,7 @@ class TB6612FNG:
         self.input_1 = OutputDevice(IN1)
         self.input_2 = OutputDevice(IN2)
         self.speed_control = PWMOutputDevice(PWM)
+        
         OutputDevice(STBY).on()
         self.speed_control.value = 1
     
