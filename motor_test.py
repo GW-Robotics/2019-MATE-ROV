@@ -1,3 +1,5 @@
+from gpiozero.pins.mock import MockFactory, MockPWMPin
+from gpiozero import Device
 from TB6612FNG import TB6612FNG
 from time import sleep
 
