@@ -4,10 +4,19 @@ from time import sleep
 motor = TB6612FNG(14, 15, 18, 23)
 
 def setup():
-    motor.forward()
+    pass
 
 def loop():
-    sleep(0.1)
+    motor.forward()
+    sleep(0.5)
+    motor.stop()
+    sleep(0.5)
+    motor.backward()
+    sleep(0.5)
+    motor.stop()
+    sleep(0.5)
+
+    
 
 setup()
 while True:
