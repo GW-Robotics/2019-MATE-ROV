@@ -9,14 +9,14 @@ class TB6612FNG:
         OutputDevice(STBY).on()
         self.speed_control.value = 1
     
-    def forward():
+    def forward(self):
         self.input_1.on()
         self.input_2.off()
     
-    def backward():
+    def backward(self):
         self.input_1.off()
         self.input_2.on()
     
-    def stop():
+    def stop(self):
         self.input_1.off()
         self.input_2.off()
