@@ -6,14 +6,9 @@ class TB6612FNG:
         self.input_1 = OutputDevice(IN1)
         self.input_2 = OutputDevice(IN2)
         self.speed_control = PWMOutputDevice(PWM)
-<<<<<<< HEAD
-        
-        OutputDevice(STBY).on()
-=======
         self.standby = OutputDevice(STBY)
         
         self.standby.on()
->>>>>>> 28a3a7b2707c5dcdd521f4809fe86181caee9b57
         self.speed_control.value = 1
     
     def forward(self):
