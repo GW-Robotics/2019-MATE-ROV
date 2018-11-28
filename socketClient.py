@@ -11,7 +11,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             i=0
         data = s.recv(1024)
         if data:  
-            print('Received', repr(data))
+            print(data[0],data[1])
         else:
             print('No data received')
         
