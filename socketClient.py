@@ -5,11 +5,13 @@ i=0
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((HOST, PORT))
     while True:
-        data = s.recv(1024)
-        s.sendall(bytes([i]))
+        s.sendall(bytearray([i,i+1]))
         i=i+1
-        if i>256:
+        if i>128:
             i=0
-        if data:
-                print('Received', repr(data))
+        data = s.recv(1024)
+        if data:  
+            print('Received', repr(data))
+        else:
+            print('No data received')
         
