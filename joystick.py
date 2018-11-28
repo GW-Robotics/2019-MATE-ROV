@@ -16,7 +16,9 @@ joystick_count = pygame.joystick.get_count()
 if(joystick_count > 1):
     print("More than 1 joystick found.")
 
-def query_values(joystick):    
+def query_values(joystick):
+
+    curr_vals = []
 
     axes = joystick.get_numaxes()
     # Values go from -1 to 1
@@ -27,6 +29,7 @@ def query_values(joystick):
     # 4: RStick L/R
     for i in range(axes):
         axis = joystick.get_axis(i)
+        curr_vals.append(axis)
         
     buttons = joystick.get_numbuttons()
     # Values are 0 or 1
@@ -42,6 +45,7 @@ def query_values(joystick):
     # 9: R3
     for i in range(buttons):
         button = joystick.get_button(i)
+        curr_vals.append(button)
         
     hats = joystick.get_numhats()
     # Value comes back in a tuple (x, y) from with values -1, 0, or 1
@@ -49,20 +53,24 @@ def query_values(joystick):
     # y: D/U
     for i in range(hats):
         hat = joystick.get_hat(i)
+        curr_vals.append(hat[0])
+        curr_vals.append(hat[1])
+
+    return curr_vals
 
 # Main loop
 button_vals = [0]*16
+the_joystick = pygame.joystick.Joystick(0)
+the_joystick.init()
 # while True:
 for i in range(10000):
-
-    the_joystick = pygame.joystick.Joystick(0)
-    the_joystick.init()
-    query_values(the_joystick)
     
     # EVENT PROCESSING STEP
     for event in pygame.event.get(): # User did something
         if event.type in input_type: #if event was an input
-            print("input lol")
+            print("input!!!11!")
+    
+    print(query_values(the_joystick))
 
 # End pygame
 pygame.quit ()
