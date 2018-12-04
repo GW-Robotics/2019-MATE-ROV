@@ -1,18 +1,22 @@
-import gwrobolib.*
+import socket
+HOST = '127.0.0.1'  # The server's hostname or IP address
+PORT = 50000        # The port used by the server
 
-# This is all test code for now
-motor1 = Motor(3, .5)
-motor2 = Motor(4)
-motor3 = Motor(16)
-motor4 = Motor(12)
-controller = MotorControl(motor1,motor2,motor3,motor4)
-controller.forward()
-motor2.setSpeed(.75)
-controller.backward()
-
-phSensorrrrr = phSensor(6)
-phSensorrrrr.getPh()
-
-thermometer1orsomething = TempSensor(7)
-
-motor2.motorBackward()
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    #connect to server
+    s.connect((HOST, PORT))
+     
+    while True:
+        #send data
+        s.sendall(bytearray([1]))
+        #recieve data
+        data = s.recv(1024)
+        #print data
+        if data: 
+            new_data =[]
+            for b in data:
+                new_data.append(b)
+            print(new_data)
+        else:
+            print('No data received')
+        
