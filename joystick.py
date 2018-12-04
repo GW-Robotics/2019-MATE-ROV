@@ -1,20 +1,22 @@
 import pygame
 
-# Initialize pygame
-pygame.init()
 
-#Initialize joysticks
-pygame.joystick.init()
+def init_joystick():
 
-# Acceptable events to query the controller
-input_type = [pygame.JOYAXISMOTION, pygame.JOYBALLMOTION, pygame.JOYBUTTONDOWN, pygame.JOYBUTTONUP, pygame.JOYHATMOTION]
+    # Initialize pygame
+    pygame.init()
 
-# Get count of joysticks
-joystick_count = pygame.joystick.get_count()
+    #Initialize joysticks
+    pygame.joystick.init()
 
-# Alert user if more than 1
-if(joystick_count > 1):
-    print("More than 1 joystick found.")
+    # Acceptable events to query the controller
+    input_type = [pygame.JOYAXISMOTION, pygame.JOYBALLMOTION, pygame.JOYBUTTONDOWN, pygame.JOYBUTTONUP, pygame.JOYHATMOTION]
+
+    the_joystick = pygame.joystick.Joystick(0)
+    the_joystick.init()
+
+    return the_joystick, input_type
+
 
 def query_values(joystick):
 
@@ -33,24 +35,24 @@ def query_values(joystick):
         
     buttons = joystick.get_numbuttons()
     # Values are 0 or 1
-    # 0: A
-    # 1: B
-    # 2: X
-    # 3: Y
-    # 4: L1
-    # 5: R1
-    # 6: BACK
-    # 7: START
-    # 8: L3
-    # 9: R3
+    # 5: A
+    # 6: B
+    # 7: X
+    # 8: Y
+    # 9: L1
+    # 10: R1
+    # 11: BACK
+    # 12: START
+    # 13: L3
+    # 14: R3
     for i in range(buttons):
         button = joystick.get_button(i)
         curr_vals.append(button)
         
     hats = joystick.get_numhats()
     # Value comes back in a tuple (x, y) from with values -1, 0, or 1
-    # x: L/R
-    # y: D/U
+    # 15: L/R
+    # 16: D/U
     for i in range(hats):
         hat = joystick.get_hat(i)
         curr_vals.append(hat[0])
@@ -59,10 +61,8 @@ def query_values(joystick):
     return curr_vals
 
 # Main loop
-button_vals = [0]*16
-the_joystick = pygame.joystick.Joystick(0)
-the_joystick.init()
-# while True:
+the_joystick, input_type = init_joystick()
+
 for i in range(10000):
     
     # EVENT PROCESSING STEP
