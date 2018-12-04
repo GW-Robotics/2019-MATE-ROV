@@ -1,6 +1,5 @@
 import pygame
 
-
 def init_joystick():
 
     # Initialize pygame
@@ -59,18 +58,3 @@ def query_values(joystick):
         curr_vals.append(hat[1])
 
     return curr_vals
-
-# Main loop
-the_joystick, input_type = init_joystick()
-
-for i in range(10000):
-    
-    # EVENT PROCESSING STEP
-    for event in pygame.event.get(): # User did something
-        if event.type in input_type: #if event was an input
-            print("input!!!11!")
-    
-    print(query_values(the_joystick))
-
-# End pygame
-pygame.quit ()
