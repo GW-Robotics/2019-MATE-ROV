@@ -1,5 +1,4 @@
 import socket
-import struct
 HOST = '127.0.0.1'  # The server's hostname or IP address
 PORT = 50000        # The port used by the server
 
@@ -16,7 +15,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         if data: 
             new_data =[]
             for b in data:
-                new_data.append(b)#int.from_bytes(b,'big'))
+                new_data.append(b)
             print(new_data)
         else:
             print('No data received')
