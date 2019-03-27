@@ -78,6 +78,29 @@ def test_pid(P = 0.2,  I = 0.0, D= 0.0, L=100):
     plt.grid(True)
     plt.show()
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
     # test_pid(1.2, 1, 0.001, L=50)
-   test_pid(0.99, .9, .001, L=50)
+    # test_pid(0.99, .9, .001, L=50)
+
+testPid = PID.PID(0.99, .9, .001)
+testPid.SetPoint=0.0
+testPid.setSampleTime(0.01)
+feedback = 0
+i = 1
+while i<50:
+    testPid.update(feedback)
+    output = testPid.output
+    if testPid.SetPoint > 0:
+        feedback += (output - (1/i))
+    if i>9:
+        testPid.SetPoint = 1
+    if i>12:
+        testPid.SetPoint = 2
+    if i>20:
+        testPid.SetPoint = 1
+    i+=1
+    time.sleep(0.02)
+    print("Time: ", i)
+    print("Feedback: ", feedback)
+    print("SetPoint: ", testPid.SetPoint)
+    print("\n")
