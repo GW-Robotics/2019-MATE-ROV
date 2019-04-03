@@ -26,8 +26,11 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             new_data =[]
             for b in data:
                 new_data.append(b)
-            print(new_data)
-            motor_val = map_values(new_data[3], 0, 200, 0, 180)
+            # print(new_data)
+            motor_val = map_values(new_data[3], 0, 200, 60, 120)
+            print(motor_val)
             kit.servo[0].angle = int(motor_val)
         else:
             print('No data received')
+
+# save motor values and send 90 if change of direction
