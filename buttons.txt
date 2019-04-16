@@ -1,0 +1,24 @@
+The controller array has 17 values
+Axes (range: -1 - 1 mapped to 0 - 200)
+INDEX   BUTTON
+0       LStick L/R
+1       LStick U/D
+2       R2/L2
+3       RStick U/D
+4       RStick L/R
+
+Buttons (0 or 1)
+5       A
+6       B
+7       X
+8       Y
+9       L1
+10      R1
+11      BACK
+12      START
+13      L3
+14      R3
+
+D-Pad (-1, 0, 1 mapped to 0, 1, 2)
+15      L/R
+16      D/U

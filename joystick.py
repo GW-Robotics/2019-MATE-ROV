@@ -30,7 +30,7 @@ def query_values(joystick):
     # 4: RStick L/R
     for i in range(axes):
         axis = joystick.get_axis(i)
-        curr_vals.append(axis)
+        curr_vals.append(int(100*axis)+100)
         
     buttons = joystick.get_numbuttons()
     # Values are 0 or 1
@@ -54,7 +54,7 @@ def query_values(joystick):
     # 16: D/U
     for i in range(hats):
         hat = joystick.get_hat(i)
-        curr_vals.append(hat[0])
-        curr_vals.append(hat[1])
+        curr_vals.append(hat[0]+1)
+        curr_vals.append(hat[1]+1)
 
     return curr_vals
