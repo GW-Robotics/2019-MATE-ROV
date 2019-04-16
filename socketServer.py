@@ -1,5 +1,5 @@
 import socket
-import joystick
+from gwrobolib import init_joystick, query_values
 import pygame
 HOST = ''  # Standard loopback interface address (localhost)
 PORT = 50000        # Port to listen on (non-privileged ports are > 1023)
@@ -10,7 +10,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     print("Ready to connect")
     #wait for connection
     conn, addr = s.accept()
-    joy, inputStuff = joystick.init_joystick()
+    joy, inputStuff = init_joystick()
     
     with conn:
         #on connect being to send and receive data
@@ -18,7 +18,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         while True:
             #send
             pygame.event.get()
-            sendData = joystick.query_values(joy)
+            sendData = query_values(joy)
             print(sendData)
             conn.sendall(bytearray(sendData))
             #then recieve
