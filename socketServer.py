@@ -1,5 +1,5 @@
 import socket
-from gwrobolib import init_joystick, query_values
+from controllerlib import init_joystick, query_values
 import pygame
 HOST = ''  # Standard loopback interface address (localhost)
 PORT = 50000        # Port to listen on (non-privileged ports are > 1023)

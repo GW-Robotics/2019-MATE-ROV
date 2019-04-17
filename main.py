@@ -1,5 +1,5 @@
 import socket
-from gwrobolib import Motor, MainMotorSystem
+from gwrobolib import Motor, MainMotorSystem, VerticalMotors
 # HOST = input("Enter IP: ")  # The server's hostname or IP address
 HOST = '169.254.48.79'
 PORT = 50000        # The port used by the server
@@ -8,12 +8,8 @@ PORT = 50000        # The port used by the server
 def map_values(x, a, b, c, d):
     return (x-a)*((d-c)/(b-a))+c
 
-up1 = Motor(4)
-up2 = Motor(5)
-up3 = Motor(6)
-up4 = Motor(7)
-
 directionalMotors = MainMotorSystem()
+vertMotors = VerticalMotors()
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     # connect to server
@@ -29,7 +25,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 new_data.append(b)
 
             print(new_data)
-
+            vertMotors.move(new_data[1]/100-1)
             directionalMotors.move([new_data[4]/100-1, (new_data[3]/100-1)])
         else:
             print('No data received')

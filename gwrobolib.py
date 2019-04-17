@@ -1,7 +1,6 @@
 from adafruit_servokit import ServoKit
 from time import sleep
 import math
-import pygame
 class Motor:
     kit = ServoKit(channels=16)
     def __init__(self, pin, angle=90):
@@ -53,73 +52,8 @@ class VerticalMotors:
         self.max = max_val
         self.min = min_val
 
-    def up(self, frac):
-        self.frontRight.setSpeed(self.max*frac)
-        self.frontRight.setSpeed(self.max*frac)
-        self.frontRight.setSpeed(self.max*frac)
-        self.frontRight.setSpeed(self.max*frac)
-
-    def up(self, frac):
-        self.frontRight.setSpeed(self.min*frac)
-        self.frontRight.setSpeed(self.min*frac)
-        self.frontRight.setSpeed(self.min*frac)
-        self.frontRight.setSpeed(self.min*frac)
-
-def init_joystick():
-
-    # Initialize pygame
-    pygame.init()
-
-    #Initialize joysticks
-    pygame.joystick.init()
-
-    # Acceptable events to query the controller
-    input_type = [pygame.JOYAXISMOTION, pygame.JOYBALLMOTION, pygame.JOYBUTTONDOWN, pygame.JOYBUTTONUP, pygame.JOYHATMOTION]
-
-    the_joystick = pygame.joystick.Joystick(0)
-    the_joystick.init()
-
-    return the_joystick, input_type
-
-
-def query_values(joystick):
-
-    curr_vals = []
-
-    axes = joystick.get_numaxes()
-    # Values go from -1 to 1
-    # 0: LStick L/R
-    # 1: LStcik U/D
-    # 2: R2/L2
-    # 3: RStick U/D
-    # 4: RStick L/R
-    for i in range(axes):
-        axis = joystick.get_axis(i)
-        curr_vals.append(int(100*axis)+100)
-        
-    buttons = joystick.get_numbuttons()
-    # Values are 0 or 1
-    # 5: A
-    # 6: B
-    # 7: X
-    # 8: Y
-    # 9: L1
-    # 10: R1
-    # 11: BACK
-    # 12: START
-    # 13: L3
-    # 14: R3
-    for i in range(buttons):
-        button = joystick.get_button(i)
-        curr_vals.append(button)
-        
-    hats = joystick.get_numhats()
-    # Value comes back in a tuple (x, y) from with values -1, 0, or 1
-    # 15: L/R
-    # 16: D/U
-    for i in range(hats):
-        hat = joystick.get_hat(i)
-        curr_vals.append(hat[0]+1)
-        curr_vals.append(hat[1]+1)
-
-    return curr_vals
+    def move(self, frac):
+        self.frontRight.setSpeed((frac+1)*(self.max-self.min)/2+self.min)
+        self.frontLeft.setSpeed((frac+1)*(self.max-self.min)/2+self.min)
+        self.backRight.setSpeed((frac+1)*(self.max-self.min)/2+self.min)
+        self.backLeft.setSpeed((frac+1)*(self.max-self.min)/2+self.min)
