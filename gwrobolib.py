@@ -24,7 +24,7 @@ class Motor:
         Motor.kit.servo[self.pin].angle = 90
 
 class MainMotorSystem:
-    def __init__(self, start_pin=0):
+    def __init__(self, start_pin=0, move_mid=90, move_amp=30, rotate_scale=10):
         self.frontRight = Motor(start_pin)
         self.frontLeft = Motor(start_pin+1)
         self.backRight = Motor(start_pin+2)
@@ -33,15 +33,18 @@ class MainMotorSystem:
         self.angleFL = 3*math.pi/4
         self.angleBL = 5*math.pi/4
         self.angleBR = 7*math.pi/4
+        self.mid = move_mid
+        self.amp = move_amp
+        self.rotate = rotate_scale
     
-    def move(self, move_vector):
+    def move(self, move_vector, rotate_amount):
         print(move_vector)
         numpad_angle = math.atan2(move_vector[1], move_vector[0])
         move_vector_mag = math.sqrt(move_vector[0]**2+move_vector[1]**2)
-        self.frontRight.setSpeed((math.cos(numpad_angle-self.angleFR))*move_vector_mag*30+90)
-        self.frontLeft.setSpeed((math.cos(numpad_angle-self.angleFL))*move_vector_mag*30+90)
-        self.backLeft.setSpeed((math.cos(numpad_angle-self.angleBL))*move_vector_mag*30+90)
-        self.backRight.setSpeed((math.cos(numpad_angle-self.angleBR))*move_vector_mag*30+90)
+        self.frontRight.setSpeed((math.cos(numpad_angle-self.angleFR))*move_vector_mag*self.amp+self.mid + (self.rotate * rotate_amount))
+        self.frontLeft.setSpeed((math.cos(numpad_angle-self.angleFL))*move_vector_mag*self.amp+self.mid - (self.rotate * rotate_amount))
+        self.backLeft.setSpeed((math.cos(numpad_angle-self.angleBL))*move_vector_mag*self.amp+self.mid)
+        self.backRight.setSpeed((math.cos(numpad_angle-self.angleBR))*move_vector_mag*self.amp+self.mid)
 
 class VerticalMotors:
     def __init__(self, start_pin=4, max_val = 120, min_val=60):

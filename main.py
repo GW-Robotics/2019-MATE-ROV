@@ -26,7 +26,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
             print(new_data)
             vertMotors.move(new_data[1]/100-1)
-            directionalMotors.move([new_data[4]/100-1, (new_data[3]/100-1)])
+            directionalMotors.move([new_data[4]/100-1, (new_data[3]/100-1)], new_data[0]/100-1)
         else:
             print('No data received')
 
